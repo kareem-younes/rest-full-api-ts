@@ -17,8 +17,11 @@ app.use("/products",productRoutes);
 
 app.use((err:any,req:Request,res:Response,next:NextFunction)=>{
 
-res.status(err.statusCode).json({message:err.message,status:err.status,});
-
+res.status(err.statusCode).json({
+  message: err.message,
+  status: err.status,
+  ...(err.details && { details: err.details }),
+});
 })
 
 app.listen(3000,()=>{

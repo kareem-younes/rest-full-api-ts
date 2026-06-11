@@ -6,6 +6,8 @@ import { eq } from "drizzle-orm";
 import {body,validationResult} from "express-validator"
 import {db} from "../../db/index"
 import {productsTable} from"../../db/productsSchema"
+import _ from "lodash"
+import {createProductSchema} from '../../db/productsSchema';
 
 export let listOfProducts=asyncW(
 async (req:Request,res:Response,next:NextFunction)=>{
@@ -50,11 +52,22 @@ res.status(201).send({status:"success",data:myP[0]});
 })
 
 export let createProduct= asyncW(
+//partial
+async(req:Request,res:Response,next:NextFunction)=>{
+    
+   
+  try {
+    var [product]=  await db.insert(productsTable).values(req.cleanBody).returning();
 
-async(req:Request,res:Response)=>{
+  } catch (error) {
+    let detailsErr = error as Error;
+    let err=new appError(500,"error","inital server error",[detailsErr.message]);
+    return next(err);
+  }
 
-let [product]=  await db.insert(productsTable).values(req.body).returning();
-res.status(201).json(product);
+
+
+  res.status(201).json(product);
 
 
 
