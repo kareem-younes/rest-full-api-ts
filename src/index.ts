@@ -1,6 +1,5 @@
 import { db } from './db/index';
-
-
+import authRouter from './routes/auth/user.route';
 import express , { NextFunction, Request, Response } from 'express';
 import productRoutes from './routes/products/products.routes.js';
 
@@ -14,6 +13,7 @@ let router=express.Router();
 app.use(express.json());
 
 app.use("/products",productRoutes);
+app.use("/auth",authRouter);
 
 app.use((err:any,req:Request,res:Response,next:NextFunction)=>{
 

@@ -10,7 +10,7 @@ export function validateData(schema: z.ZodObject<any, any>) {
       //take zod schema
       schema.parse(req.body);
       //pick only the keys that are in the schema
-      req.cleanBody=_.pick(req.body, Object.keys(createProductSchema.shape));
+      req.cleanBody=_.pick(req.body, Object.keys(schema.shape));
 
       next();
     } catch (error) {
