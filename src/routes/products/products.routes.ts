@@ -6,6 +6,7 @@ import  { Request, Response, Router } from 'express';
 import {listOfProducts,getProductById, createProduct, updateProduct, deleteProduct} from './products.controller';
 import { validateData } from "../../../middlewares/bodyValidateWithZod";
 import {createProductSchema}from "../../db/productsSchema"
+import {verifyToken} from"../../../middlewares/verification"
 const routes = Router();
 
 // let createProductSchema =z.object({
@@ -21,7 +22,7 @@ routes.get("/",listOfProducts);
 
 routes.get("/:id", getProductById);
 
-routes.post("/",validateData(createProductSchema) ,createProduct);
+routes.post("/",verifyToken,validateData(createProductSchema) ,createProduct);
 routes.put("/:id",validateBody(), updateProduct);
 routes.delete("/:id", deleteProduct);
 

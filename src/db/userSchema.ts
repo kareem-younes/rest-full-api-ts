@@ -24,3 +24,4 @@ createdAt:timestamp("created_at").notNull().defaultNow(),
 }) 
 
 export let createUserScheama=createInsertSchema(userTable).omit({id:true,createdAt:true,role:true});
+export let createloginScheama=createInsertSchema(userTable).pick({email:true,password:true})
