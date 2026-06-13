@@ -1,3 +1,4 @@
+
 import {z} from "zod"
 import { productsTable } from "../../db/productsSchema";
 import {body,validationResult} from "express-validator"
@@ -7,6 +8,7 @@ import {listOfProducts,getProductById, createProduct, updateProduct, deleteProdu
 import { validateData } from "../../../middlewares/bodyValidateWithZod";
 import {createProductSchema}from "../../db/productsSchema"
 import {verifyToken} from"../../../middlewares/verification"
+import {verifySeller} from "../../../middlewares/veryfiseller"
 const routes = Router();
 
 // let createProductSchema =z.object({
@@ -22,8 +24,8 @@ routes.get("/",listOfProducts);
 
 routes.get("/:id", getProductById);
 
-routes.post("/",verifyToken,validateData(createProductSchema) ,createProduct);
-routes.put("/:id",validateBody(), updateProduct);
-routes.delete("/:id", deleteProduct);
+routes.post("/",verifyToken,verifySeller,validateData(createProductSchema) ,createProduct);
+routes.put("/:id",verifyToken,verifySeller,validateBody(), updateProduct);
+routes.delete("/:id",verifyToken,verifySeller, deleteProduct);
 
 export default routes;

@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken"
 import { NextFunction, Request,Response } from 'express';
 import appError from "../utils/appError";
 import {asyncW} from "./asyincWrapper";
+import { UserPayload } from "../types/index";
 export let verifyToken=asyncW(
 (req:Request,res:Response,next:NextFunction)=>{
 
@@ -24,7 +25,7 @@ export let verifyToken=asyncW(
             return next(new appError(401,"invalid token","fail"))
         }
         
-            req.user=decoded
+            req.user=decoded as UserPayload
             next()
         
     })

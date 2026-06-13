@@ -55,7 +55,7 @@ export let createProduct= asyncW(
 //partial
 async(req:Request,res:Response,next:NextFunction)=>{
     
-   
+   console.log(req.user);
   try {
     var [product]=  await db.insert(productsTable).values(req.cleanBody).returning();
 
