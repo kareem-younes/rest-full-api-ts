@@ -1,9 +1,9 @@
 
 import jwt from "jsonwebtoken"
 import { NextFunction, Request,Response } from 'express';
-import appError from "../utils/appError";
-import {asyncW} from "./asyincWrapper";
-import { UserPayload } from "../types/index";
+import appError from "../utils/appError.js";
+import {asyncW} from "./asyincWrapper.js";
+import { UserPayload } from "../types/index.js";
 export let verifyToken=asyncW(
 (req:Request,res:Response,next:NextFunction)=>{
 

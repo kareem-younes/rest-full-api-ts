@@ -1,6 +1,6 @@
 import { NextFunction, Request,Response } from 'express';
-import appError from "../utils/appError";
-import {asyncW} from "./asyincWrapper";
+import appError from "../utils/appError.js";
+import {asyncW} from "./asyincWrapper.js";
 
 
 export let verifySeller=asyncW(

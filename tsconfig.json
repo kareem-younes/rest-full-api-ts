@@ -12,7 +12,6 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": false, // Allow emitting output
     "isolatedModules": true, // Required for using ESM modules
-    "ignoreDeprecations": "6.0",
     "baseUrl": ".", // Allow absolute imports relative to project root
     "paths": {
       "*": ["node_modules/*"]

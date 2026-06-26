@@ -1,13 +1,13 @@
 
-import { asyncW } from './../../../middlewares/asyincWrapper';
-import appError from "../../../utils/appError"
+import { asyncW } from './../../../middlewares/asyincWrapper.js';
+import appError from "../../../utils/appError.js"
 import { NextFunction, Request,Response } from 'express';
 import { eq } from "drizzle-orm";
 import {body,validationResult} from "express-validator"
-import {db} from "../../db/index"
-import {productsTable} from"../../db/productsSchema"
+import {db} from "../../db/index.js"
+import {productsTable} from"../../db/productsSchema.js"
 import _ from "lodash"
-import {createProductSchema} from '../../db/productsSchema';
+import {createProductSchema} from '../../db/productsSchema.js';
 
 export let listOfProducts=asyncW(
 async (req:Request,res:Response,next:NextFunction)=>{

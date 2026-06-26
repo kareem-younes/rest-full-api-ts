@@ -1,7 +1,7 @@
-import { db } from './db/index';
-import authRouter from './routes/auth/user.route';
+import authRouter from './routes/auth/user.route.js';
 import express , { NextFunction, Request, Response } from 'express';
 import productRoutes from './routes/products/products.routes.js';
+
 
 let app=express();
 
@@ -17,7 +17,7 @@ app.use("/auth",authRouter);
 
 app.use((err:any,req:Request,res:Response,next:NextFunction)=>{
 
-res.status(err.statusCode).json({
+res.status(err.statusCode ?? 500).json({
   message: err.message,
   status: err.status,
   ...(err.details && { details: err.details }),
@@ -26,6 +26,6 @@ res.status(err.statusCode).json({
 
 app.listen(3000,()=>{
 
-console.log('Server is running on port 3000');
+console.log('Server is running on port 3000 ');
 
 })

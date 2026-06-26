@@ -2,13 +2,13 @@
 import {z} from "zod"
 import { productsTable } from "../../db/productsSchema";
 import {body,validationResult} from "express-validator"
-import {validateBody} from "../../../middlewares/body-validate"
+import {validateBody} from "../../../middlewares/body-validate.js"
 import  { Request, Response, Router } from 'express';
-import {listOfProducts,getProductById, createProduct, updateProduct, deleteProduct} from './products.controller';
-import { validateData } from "../../../middlewares/bodyValidateWithZod";
-import {createProductSchema}from "../../db/productsSchema"
-import {verifyToken} from"../../../middlewares/verification"
-import {verifySeller} from "../../../middlewares/veryfiseller"
+import {listOfProducts,getProductById, createProduct, updateProduct, deleteProduct} from './products.controller.js';
+import { validateData } from "../../../middlewares/bodyValidateWithZod.js";
+import {createProductSchema}from "../../db/productsSchema.js"
+import {verifyToken} from"../../../middlewares/verification.js"
+import {verifySeller} from "../../../middlewares/veryfiseller.js"
 const routes = Router();
 
 // let createProductSchema =z.object({

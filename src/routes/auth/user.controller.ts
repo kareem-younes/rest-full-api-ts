@@ -1,12 +1,12 @@
-import { asyncW } from './../../../middlewares/asyincWrapper';
+import { asyncW } from './../../../middlewares/asyincWrapper.js';
 import { NextFunction, Request,Response } from 'express';
 import bcrypt from 'bcryptjs'
-import{db} from "../../db/index"
-import { userTable } from '../../db/userSchema';
+import{db} from "../../db/index.js"
+import { userTable } from '../../db/userSchema.js';
 import { eq } from 'drizzle-orm';
-import appError from "../../../utils/appError"
+import appError from "../../../utils/appError.js"
 import jwt from"jsonwebtoken"
-import { generateJWT } from '../../../utils/generate-jwt';
+import { generateJWT } from '../../../utils/generate-jwt.js';
 
 
 
